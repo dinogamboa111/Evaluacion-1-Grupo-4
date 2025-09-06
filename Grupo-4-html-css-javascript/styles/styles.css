@@ -229,7 +229,7 @@ main {
 
 .btn-secondary:hover {
     background-color: #ffffff;  /* Se llena blanco - feedback visual de interaccion */
-    color: #ffffff;            /* Texto azul - mantiene contraste */
+    color: #2563eb;            /* Texto azul - mantiene contraste */
 }
 
 /*HASTA AQUI BIEN*/
