@@ -397,11 +397,25 @@ main {
 
 /* TARJETA DE PROYECTO: Cada proyecto en su contenedor atractivo con efectos */
 .project-card {
-   background: rgba(68, 44, 107, 0.7); /* 👈 0.7 = 70% opaco, 30% transparente */
-    border-radius: 15px;                      /* Esquinas muy redondeadas - look moderno y amigable */
-    overflow: hidden;                         /* Oculta contenido que sobresalga - imagen no se sale */
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);  /* Sombra suave - eleva tarjeta del fondo */
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Animacion suave - cambios profesionales */
+    display: flex;               /* Flex vertical */
+    flex-direction: column;      /* Imagen arriba, contenido abajo */
+    justify-content: space-between; /* distribuye imagen y contenido */
+    background: rgba(68, 44, 107, 0.7);
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    flex: 1 1 300px;            /* ancho flexible */
+    max-width: 350px;           /* ancho máximo */
+    min-height: 500px;          /* altura mínima uniforme */
+}
+
+.project-card .project-info {
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* separa título, texto y link */
+    flex: 1;                         /* ocupa espacio restante */
 }
 
 /* EFECTO HOVER EN TARJETA: Se eleva cuando pasas el mouse encima */
@@ -424,8 +438,13 @@ main {
 
 
 /* INFORMACIoN DEL PROYECTO: Contenido de texto de la tarjeta */
-.project-info {
-    padding: 25px;  /* Espaciado comodo - contenido no toca bordes */
+.project-card .project-info {
+    padding: 15px;
+    display: flex;
+    flex-direction: column;       /* Texto y links en columna */
+    justify-content: space-between; /* Distribuye espacio de manera uniforme */
+    flex: 1;                      /* Toma el espacio disponible */
+    color: #fff;                  /* Texto legible sobre fondo oscuro */
 }
 
 /* TiTULO DEL PROYECTO: Nombre destacado de cada trabajo */
@@ -500,4 +519,102 @@ main {
 
 .footer-social a:hover {
     color: #ffffffaa;           /* Cambio sutil al pasar el mouse */
+}
+
+.justificado {
+  text-align: justify;
+  font-style: italic;   /* opcional: estilo de cita */
+  color: #333;          /* opcional: color de texto */
+  border-left: 4px solid #ffffff; /* opcional: barra decorativa */
+  padding-left: 10px;   /* espacio después de la barra */
+}
+
+.horizontal-news {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;  /* 👈 centra todas las cards */
+    gap: 20px;                /* espacio entre cards */
+}
+
+@media (max-width: 700px) {
+    .horizontal-news {
+        flex-direction: column;
+        align-items: center;  /* centra las cards en móvil */
+    }
+}
+
+.news-img {
+    width: 100%;
+    height: 200px;      /* altura uniforme */
+    object-fit: cover;  /* recorta si es necesario sin deformar */
+    border-radius: 10px;
+}
+
+/* Opcional: para pantallas pequeñas, mantener buena visual */
+@media (max-width: 700px) {
+    .news-img {
+        height: 180px; /* altura un poco menor en móviles */
+    }
+}
+
+.post-news {
+    display: flex;               /* activa flexbox */
+    flex-direction: column;      /* apila verticalmente */
+    align-items: center;         /* centra horizontalmente */
+    gap: 30px;                   /* espacio entre cards */
+    width: 100%;                 /* ocupa todo el ancho del contenedor */
+}
+
+
+
+
+.post-news .project-card {
+    display: flex;
+    flex-direction: column;   /* Imagen arriba, texto abajo */
+    gap: 15px;                /* Espacio entre imagen y texto */
+    max-width: 700px;         /* Ancho máximo de la card */
+    width: 100%;
+    background: rgba(68, 44, 107, 0.7);
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    padding: 10px;
+}
+/* Imagen dentro de la card */
+.post-news .project-card .news-img {
+    width: 100%;
+    height: 250px;          /* Más altura para balancear con texto */
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+
+.post-news .news-img {
+    width: 100%;
+    height: 250px;           /* altura uniforme */
+    object-fit: cover;       /* recorta sin deformar */
+    border-radius: 10px;
+}
+
+.post-news .project-card .project-info {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.post-news .project-card .project-info p {
+    margin: 0;
+    line-height: 1.6;
+    font-size: 1rem;
+    color: #fff;
+}
+
+@media (max-width: 768px) {
+    .post-news .project-card {
+        max-width: 100%;
+    }
+
+    .post-news .project-card .news-img {
+        height: 200px;      /* ajusta proporcionalmente */
+    }
 }
