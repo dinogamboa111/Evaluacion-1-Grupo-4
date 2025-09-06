@@ -1,625 +1,503 @@
-/* Reset básico - Eliminamos espacios por defecto del navegador */
-/* Esto nos da control total sobre el espaciado de nuestros elementos */
+.container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(#0f0527, #000);
+  overflow: hidden; /* para que las estrellas que se mueven no generen scroll */
+  z-index: -1;      /* para que esté detrás del contenido */
+}
+
+
+.space {
+  --size: 2px;
+  --space-layer: 
+    4vw 50vh 0 #fff,
+    18vw 88vh 0 #fff,
+    73vw 14vh 0 #fff;
+  
+  width: var(--size);
+  height: var(--size);
+  background: white;
+  box-shadow: var(--space-layer);
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0.75;
+}
+
+.space {
+   animation: move var(--duration) linear infinite;
+}
+
+@keyframes move {
+  from { transform: translateY(0); }
+  to { transform: translateY(-100vh); }
+}
+/* BLOQUE 1: Reset Universal - Eliminamos estilos por defecto del navegador
+   - Usamos el selector universal (*) que afecta a TODOS los elementos de la pagina
+   - Este selector tiene especificidad baja (0,0,0,1) pero afecta todo el documento
+   - margin: 0 y padding: 0 eliminan los margenes y rellenos por defecto
+   - box-sizing: border-box hace que el padding y border se incluyan en el ancho total */
 * {
-    margin: 0;          /* Sin márgenes por defecto */
-    padding: 0;         /* Sin rellenos por defecto */
-    box-sizing: border-box;  /* El ancho incluye padding y border */
+    margin: 0;          /* Elimina margenes por defecto de todos los elementos */
+    padding: 0;         /* Elimina rellenos por defecto de todos los elementos */
+    box-sizing: border-box;  /* Cambia el modelo de caja: width incluye padding y border */
 }
 
-/* Estilos base del body - Configuración general de la página */
+/* BLOQUE 2: Estilos base del elemento body - Configuracion general de toda la pagina
+   - El body es el contenedor principal de todo el contenido visible
+   - Estos estilos se heredan por la mayoria de elementos hijos
+   - Es el lugar ideal para definir fuentes, colores y espaciado base */
 body {
-    font-family: Arial, sans-serif;  /* Fuente legible y disponible */
-    line-height: 1.6;                /* Espaciado entre líneas cómodo */
-    color: #333;                      /* Gris oscuro, más suave que negro */
-    background-color: #ffffff;        /* Fondo blanco limpio */
-    padding-top: 70px;               /* Espacio para el header fijo */
+    font-family: 'Roboto Mono', monospace;
+    line-height: 1.6;                /* Espaciado entre lineas: 1.6 veces el tamano de fuente */
+    color: #ffffff;                      /* Color de texto: gris oscuro (#333) mas suave que negro */
+    background-color: #f3eeee;        /* Fondo: gris muy claro para contraste suave */
+}
+/* BLOQUE 3: Estilos para elementos h1 - Titulos principales
+   - Selector de elemento: afecta a todos los h1 del documento
+   - Centramos y damos color distintivo para crear jerarquia visual */
+h1 {
+    color: #ffffff;        /* Azul distintivo para destacar del texto normal */
+    text-align: center;    /* Centrado horizontal del texto */
+    padding: 50px 20px;    /* Espaciado: 50px arriba/abajo, 20px izquierda/derecha */
 }
 
-/* Scroll suave - Navegación elegante entre secciones */
-/* Cuando alguien hace clic en el menú, se desliza suavemente */
-html {
-    scroll-behavior: smooth;
-}
+/* HASTA ACA BIEN*/
 
-/* Mejoras generales - Detalles que marcan la diferencia */
-/* Cuando seleccionas texto, se ve con los colores de nuestra marca */
-::selection {
-    background-color: #2563eb;  /* Azul de nuestra paleta */
-    color: white;               /* Texto blanco para contraste */
-}
 
-/* Efecto de clic en botones - Feedback visual al usuario */
-/* Cuando presionas un botón, se hace ligeramente más pequeño */
-.btn:active {
-    transform: scale(0.98);  /* Se reduce al 98% cuando se presiona */
-}
 
-/* Animación sutil para las cards - Aparecen gradualmente */
-/* Las tarjetas se deslizan desde abajo al cargar la página */
-.project-card,
-.stat {
-    animation: fadeInUp 0.6s ease-out;  /* Aparece en 0.6 segundos */
-}
 
-/* Definimos la animación fadeInUp */
-/* De invisible y 30px abajo, a visible y en su posición */
-@keyframes fadeInUp {
-    from {
-        opacity: 0;                    /* Invisible */
-        transform: translateY(30px);   /* 30px más abajo */
-    }
-    to {
-        opacity: 1;                    /* Completamente visible */
-        transform: translateY(0);      /* En su posición final */
-    }
-}
+/* BLOQUE 4: header y Navegacion - Barra fija en la parte superior
+   - Usamos position: fixed para que se mantenga visible al hacer scroll
+   - z-index alto (1000) para que aparezca sobre otros elementos
+   - flexbox para organizar logo y menu horizontalmente */
 
-/* Efecto focus mejorado - Accesibilidad para navegación con teclado */
-/* Cuando navegas con Tab, muestra un borde azul sutil */
-.btn:focus,
-input:focus,
-textarea:focus {
-    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);  /* Sombra azul transparente */
-}
-
-/* Header y Navegación - Barra superior que siempre está visible */
-/* Configuramos el header para que se quede fijo arriba al hacer scroll */
 .header {
-    background-color: #ffffff;                 /* Fondo blanco limpio */
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra sutil para separarlo */
-    position: fixed;    /* Se queda fijo al hacer scroll */
-    top: 0;            /* Pegado arriba */
-    left: 0;           /* Pegado a la izquierda */
-    right: 0;          /* Pegado a la derecha (ancho completo) */
-    z-index: 1000;     /* Aparece sobre otros elementos */
+    background: rgba(32, 17, 56, 0.8);  /* totalmente transparente */
+    box-shadow: none;               /* quita la sombra; opcional */
+    position: fixed;                /* se mantiene fijo al hacer scroll */
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;                  /* sobre las estrellas */
+    font-family: 'Poppins', sans-serif;
 }
 
-/* Contenedor de la navegación - Organiza logo y menú */
-/* Usamos Flexbox para poner logo a la izquierda y menú a la derecha */
+
+
+/* BLOQUE 5: Contenedor de navegacion - Organiza logo y menu con flexbox
+   - flexbox es ideal para alinear elementos horizontalmente
+   - justify-content: space-between pone logo a la izquierda, menu a la derecha */
 .nav-container {
-    max-width: 1200px;              /* No más ancho que esto */
-    margin: 0 auto;                 /* Centrado horizontalmente */
-    padding: 0 20px;                /* Espacios laterales */
-    display: flex;                  /* Activamos Flexbox */
-    justify-content: space-between; /* Logo izquierda, menú derecha */
-    align-items: center;            /* Centrado vertical */
+    max-width: 1200px;              /* Ancho maximo para mantener legibilidad */
+    margin: 0 auto;                 /* 0 = sin margen arriba/abajo, auto = centra horizontalmente */
+    padding: 0 20px;                /* 0 = sin relleno arriba/abajo, 20px = espacio lateral */
+    display: flex;                  /* Activa flexbox para layout horizontal */
+    justify-content: space-between; /* Logo izquierda, menu derecha */
+    align-items: center;            /* Centra verticalmente logo y menu */
     height: 70px;                   /* Altura fija del header */
 }
 
-/* Estilo del logo - Nuestra marca */
-/* El logo debe destacar con nuestro color principal */
+/* LOGO DEL SITIO: Marca principal destacada */
 .logo h1 {
-    color: #2563eb;      /* Azul característico */
-    font-size: 1.8rem;   /* Tamaño prominente pero no excesivo */
-    margin: 0;           /* Sin márgenes para control total */
+    color: #ffffff;      /* Azul marca - color caracteristico del sitio */
+    font-size: 1.8rem;   /* 1.8rem = 1.8 veces el tamano base - se adapta si usuario cambia zoom */
+    margin: 0;           /* Sin margenes - control total del espaciado */
 }
 
-/* Menú de navegación - Lista horizontal de enlaces */
-/* Convertimos la lista vertical en horizontal usando Flexbox */
+/* MENu DE NAVEGACIoN: Lista horizontal de enlaces principales */
 .nav-menu {
-    display: flex;       /* Elementos en línea horizontal */
-    list-style: none;    /* Sin bullets de lista */
-    gap: 30px;          /* 30px de espacio entre cada enlace */
-    margin: 0;          /* Sin márgenes */
-    padding: 0;         /* Sin rellenos */
+    display: flex;       /* flexbox - convierte lista vertical en horizontal */
+    list-style: none;    /* Sin bullets - diseno limpio sin puntos */
+    gap: 30px;          /* 30px entre enlaces - espacio comodo para clickear */
+    margin: 0;          /* Sin margenes - control total */
+    padding: 0;         /* Sin rellenos - elimina espacios por defecto */
 }
 
-/* Enlaces del menú - Estilo y comportamiento */
-/* Los enlaces deben verse limpios y cambiar suavemente al pasar el mouse */
+/* ENLACES DE NAVEGACIoN: Estado normal de los enlaces (antes del hover) */
 .nav-menu a {
-    text-decoration: none;        /* Sin subrayado */
-    color: #333;                  /* Gris oscuro legible */
-    font-weight: 500;             /* Un poco más grueso que normal */
-    transition: color 0.3s ease;  /* Cambio suave de color en 0.3s */
+    text-decoration: none;        /* Sin subrayado - diseno limpio */
+    color: #ffffff;                  /* ESTADO NORMAL: gris oscuro para lectura comoda */
+    font-weight: 500;             /* Semi-negrita - destaca pero no domina */
+    transition: color 0.3s ease;  /* Transicion suave para cuando cambie a hover */
 }
 
-/* Efecto hover en enlaces - Feedback visual */
-/* Al pasar el mouse, cambian al color de nuestra marca */
+/* HOVER EN NAVEGACIoN: Feedback visual al pasar mouse */
 .nav-menu a:hover {
-    color: #2563eb;  /* Azul principal cuando pasas el mouse */
+    color: #ffffff;  /* Azul marca - consistente con color del logo */
 }
 
-/* Contenedor general - Mantiene el contenido centrado */
-/* Todas las secciones usan este contenedor para consistencia */
-.container {
-    max-width: 1200px;  /* Ancho máximo para legibilidad */
-    margin: 0 auto;     /* Centrado automático */
-    padding: 0 20px;    /* Espacios laterales en móviles */
+/* AJUSTE ADICIONAL AL BODY: Como el header es fijo, agregamos padding para que no tape el contenido
+   - Esto se SUMA al body ya definido en el PASO 2 (fuente, color, fondo)
+   - CSS combina ambas definiciones automáticamente */
+body {
+    padding-top: 70px;              /* 70px = altura del header - evita que tape el contenido */
 }
 
-/* Títulos de sección - Consistencia visual */
-/* Todos los títulos principales siguen el mismo patrón */
-.section-title {
-    text-align: center;    /* Centrado para impacto */
-    font-size: 2.5rem;     /* Grande pero no abrumador */
-    margin-bottom: 50px;   /* Espacio antes del contenido */
-    color: #2563eb;        /* Color de marca para coherencia */
+/* ESPACIADO DEL CONTENIDO PRINCIPAL: El main necesita respiro interno para que no se vea pegado a los bordes */
+main {
+    padding: 20px;  /* 20px en todos los lados - contenido comodo sin tocar bordes */
 }
 
-/* Sección Hero - Creamos la primera impresión más impactante posible */
-/* Esta es lo primero que ve el visitante, debe capturar su atención inmediatamente */
+/* HASTA ACA BIEN*/
+
+
+
+/* BLOQUE 6: Seccion hero - Esta es la primera impresion del sitio, debe capturar atencion inmediatamente y comunicar quien eres. Vamos a crear un fondo con gradiente atractivo, centrar todo el contenido perfectamente y hacer botones profesionales que inviten a la accion */
+
 .hero {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); /* Degradado diagonal de azul a morado para crear impacto visual */
-    color: white;               /* Texto blanco porque contrasta perfectamente con el fondo oscuro */
-    min-height: 80vh;          /* Ocupa el 80% de la altura visible para crear sensación de grandeza */
-    display: flex;             /* Usamos Flexbox porque es la forma más fácil de centrar contenido */
-    align-items: center;       /* Centra el contenido verticalmente en la pantalla */
-    justify-content: center;   /* Centra el contenido horizontalmente en la pantalla */
-    text-align: center;        /* Centra el texto dentro de cada elemento para armonía */
+    background-image: url("Fondo_web.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;    
+    min-height: 100vh;
+    display: flex;
+    justify-content: center; /* horizontal */
+    align-items: flex-start; /* alinea el contenido arriba */
+    text-align: center;
+    color: white;
+    text-shadow: 0 2px 6px rgba(0,0,0,0.7);
+    padding-top: 10px; /* deja espacio debajo del header */
 }
 
-/* Contenedor del hero - Evitamos que el texto sea muy ancho y difícil de leer */
+
+
 .hero-container {
-    max-width: 1200px;  /* Limitamos a 1200px porque líneas muy largas son difíciles de leer */
-    padding: 0 20px;    /* Espacios laterales para que no toque los bordes en móviles */
+    max-width: 1200px;
+    padding: 0 20px;
+    font-family: 'Poppins', sans-serif;
+    position: relative;
+    top: 60px;   /* 👈 mueve el texto hacia abajo (60px ≈ 3 cm aprox en pantallas normales) */
 }
 
-/* Título principal del hero - Debe ser lo primero que capte la atención */
 .hero-title {
-    font-size: 3rem;       /* 48px - Lo suficientemente grande para impactar sin abrumar */
-    font-weight: 700;      /* Extra negrita porque queremos que destaque sobre todo lo demás */
-    margin-bottom: 20px;   /* Espacio calculado para separar del subtítulo sin romper la unidad visual */
-    line-height: 1.2;      /* Líneas más juntas porque en títulos grandes el espacio se ve excesivo */
+    font-size: 5rem;      /* 48px - grande para impactar sin abrumar */
+    font-weight: 700;     /* Extra negrita - destaca sobre todo lo demas */
+    margin-bottom: 1px;  /* Espacio calculado - separa de subtitulo sin romper unidad visual */
+    line-height: 1.2;     /* Lineas juntas - en titulos grandes el espacio se ve excesivo */
 }
 
-/* Subtítulo del hero - Explica qué haces de forma clara y concisa */
 .hero-subtitle {
-    font-size: 1.3rem;     /* 20.8px - Más grande que texto normal para darle importancia */
-    margin-bottom: 30px;   /* Suficiente espacio para separar de los botones */
-    opacity: 0.9;          /* Ligeramente transparente para crear jerarquía: título más importante */
-    max-width: 600px;      /* Limitamos el ancho porque líneas muy largas son difíciles de leer */
-    margin-left: auto;     /* Combinado con margin-right hace el centrado automático */
-    margin-right: auto;    /* Combinado con margin-left hace el centrado automático */
+    font-size: 1.3rem;
+    margin-bottom: 20px;
+    opacity: 0.9;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+
+    font-family: 'Roboto Mono', monospace;
 }
 
-/* Botones del hero - Las acciones más importantes que queremos que realicen */
 .hero-buttons {
-    display: flex;             /* Flexbox para alinearlos horizontalmente */
-    gap: 20px;                 /* 20px de separación para que no se vean pegados */
-    justify-content: center;   /* Centrados porque es la posición más equilibrada visualmente */
-    flex-wrap: wrap;          /* En móviles se apilan uno debajo del otro automáticamente */
+    display: flex;             /* flexbox - alinea botones horizontalmente */
+    gap: 20px;                 /* 20px separacion - no se ven pegados */
+    justify-content: center;   /* Centrados - posicion mas equilibrada visualmente */
+    flex-wrap: wrap;          /* En moviles se apilan automaticamente */
 }
 
-/* Sistema de botones - Creamos botones profesionales y usables */
+/* SISTEMA DE BOTONES - Botones profesionales y usables para las acciones mas importantes */
 .btn {
-    display: inline-block;           /* Se comporta como botón pero puede ser un enlace */
-    padding: 12px 30px;             /* Padding calculado para ser fácil de clickear (mínimo 44px de altura) */
-    border-radius: 5px;             /* Esquinas ligeramente redondeadas para look moderno sin exagerar */
-    text-decoration: none;          /* Sin subrayado porque los botones no deben verse como enlaces */
-    font-weight: 600;               /* Semi-negrita para que el texto destaque y sea legible */
-    transition: all 0.3s ease;      /* Transición suave para que los cambios se vean profesionales */
-    border: 2px solid transparent;  /* Borde transparente que usaremos en los efectos hover */
+    display: inline-block;           /* Se comporta como boton pero puede ser enlace */
+    padding: 12px 30px;             /* Padding calculado - facil de clickear (minimo 44px altura) */
+    border-radius: 5px;             /* Esquinas redondeadas - look moderno sin exagerar */
+    text-decoration: none;          /* Sin subrayado - botones no deben verse como enlaces */
+    font-weight: 600;               /* Semi-negrita - texto destaca y es legible */
+    transition: all 0.3s ease;      /* Transicion suave - cambios se ven profesionales */
+    border: 2px solid transparent;  /* Borde transparente - lo usaremos en efectos hover */
 }
 
-/* Botón primario - La acción más importante que queremos que hagan */
 .btn-primary {
-    background-color: #ffffff;  /* Fondo blanco porque destaca perfectamente sobre el degradado */
-    color: #2563eb;            /* Color azul (nuestro color de marca) para consistencia */
+    background-color: #ffffff;  /* Fondo blanco - destaca perfectamente sobre gradiente */
+    color: #2563eb;            /* Azul marca - consistencia con color principal */
 }
 
-/* Botón primario en hover - Efecto elegante de inversión */
 .btn-primary:hover {
-    background-color: transparent;  /* Se vuelve transparente para mostrar el degradado */
-    color: #ffffff;                /* Texto cambia a blanco para contrastar */
-    border-color: #ffffff;         /* Aparece borde blanco para mantener la forma del botón */
+    background-color: transparent;  /* Se vuelve transparente - muestra gradiente */
+    color: #ffffff;                /* Texto blanco - contrasta con gradiente */
+    border-color: #ffffff;         /* Borde blanco - mantiene forma del boton */
 }
 
-/* Botón secundario - Acción menos importante pero visible */
 .btn-secondary {
-    background-color: transparent;  /* Sin fondo para darle menos prominencia visual */
-    color: #ffffff;                /* Texto blanco para contrastar con el fondo oscuro */
-    border-color: #ffffff;         /* Borde blanco para definir los límites del botón */
+    background-color: transparent;  /* Sin fondo - menos prominencia visual */
+    color: #ffffff;                /* Texto blanco - contrasta con fondo oscuro */
+    border-color: #ffffff;         /* Borde blanco - define limites del boton */
 }
 
-/* Botón secundario en hover - Se vuelve sólido para feedback visual */
 .btn-secondary:hover {
-    background-color: #ffffff;  /* Se llena de blanco para indicar interacción */
-    color: #2563eb;            /* Texto cambia a azul para mantener contraste */
+    background-color: #ffffff;  /* Se llena blanco - feedback visual de interaccion */
+    color: #ffffff;            /* Texto azul - mantiene contraste */
 }
 
-/* Botón ancho completo - Para formularios */
-.btn-full {
-    width: 100%;         /* Ocupa todo el ancho disponible */
-    padding: 15px;       /* Más relleno para formularios */
-    font-size: 1.1rem;   /* Ligeramente más grande */
-}
-
-/* Sección Acerca de - Información personal */
-/* Alternamos el color de fondo para separar visualmente las secciones */
-.about {
-    padding: 80px 0;              /* Espaciado generoso arriba y abajo */
-    background-color: #f8f9fa;    /* Gris muy claro para contrastar */
-}
-
-/* Layout de la sección about - Texto y estadísticas */
-/* Usamos CSS Grid: texto ocupa 2/3, estadísticas 1/3 */
-.about-content {
-    display: grid;                    /* Activamos CSS Grid */
-    grid-template-columns: 2fr 1fr;   /* 2 partes texto, 1 parte stats */
-    gap: 50px;                       /* Espacio entre columnas */
-    align-items: center;             /* Alineación vertical centrada */
-}
-
-/* Texto de la sección about - Fácil de leer */
-.about-text {
-    font-size: 1.1rem;    /* Ligeramente más grande para comodidad */
-    line-height: 1.8;      /* Espaciado generoso entre líneas */
-}
-
-/* Párrafos del about - Espaciado entre párrafos */
-.about-text p {
-    margin-bottom: 20px;  /* Espacio entre cada párrafo */
-}
-
-/* Contenedor de estadísticas - Tarjetas apiladas */
-.about-stats {
-    display: grid;                  /* Grid para las estadísticas */
-    grid-template-columns: 1fr;     /* Una columna en desktop */
-    gap: 30px;                     /* Espacio entre estadísticas */
-}
-
-/* Tarjeta individual de estadística */
-/* Cada número importante va en su propia tarjeta destacada */
-.stat {
-    text-align: center;                      /* Contenido centrado */
-    padding: 30px 20px;                     /* Relleno generoso */
-    background: white;                      /* Fondo blanco para destacar */
-    border-radius: 10px;                    /* Esquinas redondeadas */
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1); /* Sombra para elevar */
-}
-
-/* Número de la estadística - Debe impactar */
-.stat h3 {
-    font-size: 2.5rem;     /* Muy grande para impacto */
-    color: #2563eb;        /* Color de marca */
-    margin-bottom: 10px;   /* Espacio antes del texto */
-}
-
-/* Descripción de la estadística */
-.stat p {
-    color: #666;          /* Gris para menos prominencia */
-    font-size: 0.9rem;    /* Más pequeño que el número */
-}
-
-/* Sección Proyectos - Muestra tu trabajo */
-/* Volvemos al fondo blanco para alternar con la sección anterior */
-.projects {
-    padding: 80px 0;              /* Espaciado consistente */
-    background-color: #ffffff;    /* Fondo blanco para contraste */
-}
-
-/* Grid de proyectos - Cuadrícula responsiva automática */
-/* Los proyectos se organizan automáticamente según el ancho disponible */
-.projects-grid {
-    display: grid;                                              /* Activamos CSS Grid */
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Columnas automáticas, mínimo 300px */
-    gap: 30px;                                                  /* Espacio entre tarjetas */
-}
-
-/* Tarjeta de proyecto - Cada proyecto en su contenedor */
-/* Diseñamos tarjetas atractivas con efecto hover */
-.project-card {
-    background: white;                                     /* Fondo blanco limpio */
-    border-radius: 15px;                                  /* Esquinas muy redondeadas */
-    overflow: hidden;                                     /* Oculta contenido que sobresalga */
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);             /* Sombra suave */
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Animación suave */
-}
-
-/* Efecto hover en tarjetas de proyecto - Se eleva */
-.project-card:hover {
-    transform: translateY(-10px);                   /* Se eleva 10px */
-    box-shadow: 0 20px 40px rgba(0,0,0,0.15);      /* Sombra más pronunciada */
-}
-
-/* Imagen del proyecto - Placeholder visual */
-/* Por ahora usamos un gradiente con número, luego puedes poner imágenes reales */
-.project-image {
-    height: 200px;                                               /* Altura fija */
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); /* Gradiente atractivo */
-    display: flex;                                               /* Para centrar contenido */
-    align-items: center;                                         /* Centrado vertical */
-    justify-content: center;                                     /* Centrado horizontal */
-    font-size: 3rem;                                           /* Número grande */
-    font-weight: 700;                                           /* Muy negrita */
-    color: white;                                               /* Texto blanco */
-}
-
-/* Información del proyecto - Contenido de la tarjeta */
-.project-info {
-    padding: 25px;  /* Espaciado cómodo dentro de la tarjeta */
-}
-
-/* Título del proyecto - Nombre destacado */
-.project-info h3 {
-    font-size: 1.5rem;     /* Tamaño prominente */
-    margin-bottom: 15px;   /* Espacio antes de la descripción */
-    color: #333;          /* Gris oscuro legible */
-}
-
-/* Descripción del proyecto - Explicación del trabajo */
-.project-info p {
-    color: #666;           /* Gris medio para texto secundario */
-    line-height: 1.6;      /* Espaciado legible */
-    margin-bottom: 20px;   /* Espacio antes de las tecnologías */
-}
-
-/* Contenedor de tecnologías - Etiquetas de habilidades */
-.project-tech {
-    display: flex;      /* Etiquetas en línea */
-    flex-wrap: wrap;    /* Se acomodan en varias líneas si es necesario */
-    gap: 10px;         /* Espacio entre etiquetas */
-}
-
-/* Etiqueta individual de tecnología - Skills usados */
-.project-tech span {
-    background: #e3f2fd;    /* Fondo azul muy claro */
-    color: #1976d2;         /* Texto azul oscuro */
-    padding: 5px 12px;      /* Relleno pequeño */
-    border-radius: 20px;    /* Muy redondeado (píldora) */
-    font-size: 0.8rem;      /* Texto pequeño */
-    font-weight: 600;       /* Semi-negrita */
-}
-
-/* Sección Contacto - Formulario para clientes */
-/* Alternamos el fondo otra vez para mantener el ritmo visual */
-.contact {
-    padding: 80px 0;              /* Espaciado consistente */
-    background-color: #f8f9fa;    /* Fondo gris claro */
-}
-
-/* Layout de contacto - Información y formulario */
-/* Dividimos en dos columnas: info a la izquierda, formulario a la derecha */
-.contact-content {
-    display: grid;                  /* CSS Grid para layout */
-    grid-template-columns: 1fr 1fr; /* Dos columnas iguales */
-    gap: 50px;                     /* Espacio entre columnas */
-    align-items: start;            /* Alineados arriba (alturas diferentes) */
-}
-
-/* Título de la información de contacto */
-.contact-info h3 {
-    font-size: 1.8rem;     /* Grande para llamar atención */
-    margin-bottom: 20px;   /* Espacio antes del texto */
-    color: #333;          /* Gris oscuro */
-}
-
-/* Descripción del contacto - Invitación a escribir */
-.contact-info p {
-    font-size: 1.1rem;     /* Ligeramente más grande */
-    line-height: 1.7;       /* Espaciado cómodo */
-    color: #666;           /* Gris medio */
-    margin-bottom: 30px;   /* Espacio antes de los datos */
-}
-
-/* Item individual de contacto - Email, teléfono, etc */
-.contact-item {
-    margin-bottom: 15px;  /* Espacio entre cada item */
-    font-size: 1rem;      /* Tamaño normal */
-    color: #333;          /* Gris oscuro legible */
-}
-
-/* Etiquetas de contacto - Email:, Teléfono:, etc */
-.contact-item strong {
-    color: #2563eb;  /* Color de marca para las etiquetas */
-}
-
-/* Formulario de contacto - Tarjeta destacada */
-/* El formulario debe destacar como elemento principal */
-.contact-form {
-    background: white;                        /* Fondo blanco para destacar */
-    padding: 40px;                           /* Relleno generoso */
-    border-radius: 15px;                     /* Esquinas redondeadas */
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1); /* Sombra para elevar */
-}
-
-/* Grupo de campo de formulario - Cada input con su label */
-.form-group {
-    margin-bottom: 25px;  /* Espacio entre cada campo */
-}
-
-/* Etiquetas de formulario - Nombre, Email, etc */
-.form-group label {
-    display: block;        /* Ocupa toda la línea */
-    margin-bottom: 8px;    /* Espacio antes del input */
-    font-weight: 600;      /* Semi-negrita para destacar */
-    color: #333;          /* Gris oscuro */
-}
-
-/* Campos de entrada - Inputs y textarea */
-/* Todos los campos deben verse consistentes y cómodos de usar */
-.form-group input,
-.form-group textarea {
-    width: 100%;                       /* Ancho completo */
-    padding: 12px 15px;                /* Relleno cómodo */
-    border: 2px solid #e1e5e9;         /* Borde gris claro */
-    border-radius: 8px;                /* Esquinas redondeadas */
-    font-size: 1rem;                   /* Tamaño legible */
-    transition: border-color 0.3s ease; /* Transición suave del borde */
-}
-
-/* Campos en focus - Cuando el usuario hace clic */
-.form-group input:focus,
-.form-group textarea:focus {
-    outline: none;           /* Sin borde por defecto del navegador */
-    border-color: #2563eb;   /* Borde azul cuando está activo */
-}
-
-/* Footer - Pie de página final */
-/* El footer debe ser oscuro para marcar el final del sitio */
-.footer {
-    background-color: #333;    /* Fondo gris oscuro */
-    color: white;             /* Texto blanco para contraste */
-    padding: 50px 0 20px;     /* Más espaciado arriba que abajo */
-}
-
-/* Contenido principal del footer - Info y enlaces */
-.footer-content {
-    display: grid;                    /* Grid para organizar */
-    grid-template-columns: 2fr 1fr;   /* Info ocupa más espacio que enlaces */
-    gap: 50px;                       /* Espacio entre columnas */
-    margin-bottom: 30px;             /* Espacio antes del copyright */
-}
-
-/* Título del footer - Reafirma la marca */
-.footer-info h3 {
-    font-size: 1.5rem;     /* Prominente pero no excesivo */
-    margin-bottom: 15px;   /* Espacio antes de la descripción */
-    color: #2563eb;        /* Color de marca para coherencia */
-}
-
-/* Descripción del footer - Resumen de tu trabajo */
-.footer-info p {
-    color: #ccc;        /* Gris claro para texto secundario */
-    line-height: 1.6;   /* Espaciado legible */
-}
-
-/* Enlaces del footer - Navegación secundaria */
-.footer-links {
-    display: flex;           /* Flexbox para los enlaces */
-    flex-direction: column;  /* Apilados verticalmente */
-    gap: 15px;              /* Espacio entre enlaces */
-}
-
-/* Enlaces individuales del footer */
-.footer-links a {
-    color: #ccc;                  /* Gris claro */
-    text-decoration: none;        /* Sin subrayado */
-    transition: color 0.3s ease;  /* Transición suave */
-}
-
-/* Hover en enlaces del footer */
-.footer-links a:hover {
-    color: #2563eb;  /* Azul de marca al pasar el mouse */
-}
-
-/* Sección de copyright - Información legal */
-.footer-bottom {
-    border-top: 1px solid #555;  /* Línea divisoria sutil */
-    padding-top: 20px;           /* Espacio después de la línea */
-    text-align: center;          /* Copyright centrado */
-    color: #999;                /* Gris muy claro */
-    font-size: 0.9rem;          /* Texto pequeño */
-}
-
-/* RESPONSIVE DESIGN - Adaptación a móviles y tablets */
-/* Cuando la pantalla es menor a 768px (tablets y móviles) */
+/*HASTA AQUI BIEN*/
+/* BLOQUE 9: responsive Design - Adaptacion a pantallas moviles y tablets
+   - @media query se activa cuando la pantalla es menor a 768px
+   - Cambiamos layouts de horizontal a vertical para mejor usabilidad en moviles
+   - Reducimos tamanos de fuente para que el contenido quepa mejor */
 @media (max-width: 768px) {
-    /* Navegación en móvil - Cambiamos de horizontal a vertical */
+    /* NAVEGACIoN MoVIL: Cambiamos de layout horizontal a vertical */
     .nav-container {
-        flex-direction: column;  /* Logo arriba, menú abajo */
-        height: auto;           /* Altura automática (no fija) */
-        padding: 15px 20px;     /* Menos padding */
+        flex-direction: column;  /* Logo arriba, menu abajo (en lugar de lado a lado) */
+        height: auto;           /* Altura automatica (no fija) para acomodar contenido vertical */
+        padding: 15px 20px;     /* Menos espaciado interno para ahorrar espacio */
     }
     
-    /* Menú en móvil - Centrado y con menos espacio */
+    /* MENu MoVIL: Centramos y ajustamos espaciado */
     .nav-menu {
-        margin-top: 15px;         /* Espacio después del logo */
-        flex-wrap: wrap;          /* Se acomoda en varias líneas */
-        justify-content: center;  /* Centrado */
-        gap: 20px;               /* Menos espacio entre enlaces */
+        margin-top: 15px;         /* Espacio entre logo y menu */
+        flex-wrap: wrap;          /* Permite que los enlaces se acomoden en varias lineas */
+        justify-content: center;  /* Centra los enlaces del menu */
+        gap: 20px;               /* Reduce el espacio entre enlaces (era 30px en desktop) */
     }
     
-    /* Título hero más pequeño en móvil - Para que quepa bien */
+    /* TiTULO HERO MoVIL: Reducimos tamano para que no sea abrumador en pantallas pequenas */
     .hero-title {
-        font-size: 2.2rem;  /* Reducimos de 3rem a 2.2rem */
+        font-size: 2.2rem;  /* Mas pequeno que desktop (3rem) pero aun impactante */
     }
     
-    /* Subtítulo hero ajustado para móvil */
     .hero-subtitle {
-        font-size: 1.1rem;  /* Reducimos de 1.3rem a 1.1rem */
+        font-size: 1.1rem;
     }
     
-    /* Botones del hero en móvil - Apilados verticalmente */
     .hero-buttons {
-        flex-direction: column;  /* Uno debajo del otro */
-        align-items: center;     /* Centrados */
+        flex-direction: column;
+        align-items: center;
     }
     
-    /* Botones en móvil - Ancho fijo y centrado */
     .btn {
-        width: 200px;        /* Mismo ancho para todos */
-        text-align: center;  /* Texto centrado */
+        width: 200px;
+        text-align: center;
     }
     
-    /* Ajuste del body - Más espacio para header más alto */
     body {
-        padding-top: 120px;  /* Más padding porque el header es más alto */
-    }
-    
-    /* Sección about en móvil - Una sola columna */
-    .about-content {
-        grid-template-columns: 1fr;  /* Solo una columna */
-        gap: 40px;                  /* Menos espacio entre elementos */
-    }
-    
-    /* Estadísticas en móvil - Tres columnas pequeñas */
-    .about-stats {
-        grid-template-columns: repeat(3, 1fr);  /* 3 columnas en horizontal */
-        gap: 15px;                             /* Espacio mínimo */
-    }
-    
-    /* Tarjetas de estadísticas más compactas en móvil */
-    .stat {
-        padding: 20px 10px;  /* Menos padding para ahorrar espacio */
-    }
-    
-    /* Títulos de sección más pequeños en móvil */
-    .section-title {
-        font-size: 2rem;  /* Reducimos de 2.5rem a 2rem */
-    }
-    
-    /* Grid de proyectos en móvil - Una sola columna */
-    .projects-grid {
-        grid-template-columns: 1fr;  /* Proyectos apilados verticalmente */
-    }
-    
-    /* Contacto en móvil - Info arriba, formulario abajo */
-    .contact-content {
-        grid-template-columns: 1fr;  /* Una sola columna */
-        gap: 30px;                  /* Menos espacio entre elementos */
-    }
-    
-    /* Formulario más compacto en móvil */
-    .contact-form {
-        padding: 25px;  /* Menos padding interno */
-    }
-    
-    /* Footer en móvil - Todo centrado y apilado */
-    .footer-content {
-        grid-template-columns: 1fr;  /* Una sola columna */
-        gap: 30px;                  /* Espacio entre elementos */
-        text-align: center;         /* Todo centrado */
-    }
-    
-    /* Enlaces del footer en móvil - Horizontales centrados */
-    .footer-links {
-        flex-direction: row;        /* Cambiamos a horizontal */
-        justify-content: center;    /* Centrados */
-        flex-wrap: wrap;           /* Se acomodan si no caben */
+        padding-top: 120px;
     }
 }
 
-/* MÓVILES PEQUEÑOS - Menos de 480px de ancho */
-/* Para teléfonos muy pequeños, ajustamos aún más */
 @media (max-width: 480px) {
-    /* Header aún más compacto en móviles pequeños */
     .nav-container {
-        padding: 10px 15px;  /* Padding mínimo */
+        padding: 10px 15px;
     }
     
-    /* Título hero muy compacto para pantallas muy pequeñas */
     .hero-title {
-        font-size: 1.8rem;  /* Aún más pequeño */
+        font-size: 1.8rem;
     }
     
-    /* Subtítulo en tamaño base para móviles pequeños */
     .hero-subtitle {
-        font-size: 1rem;  /* Tamaño base (16px) */
+        font-size: 1rem;
     }
     
-    /* Contenedor hero con padding mínimo en móviles pequeños */
     .hero-container {
-        padding: 0 15px;  /* Padding reducido para aprovechar espacio */
+        padding: 0 15px;
     }
+}
+
+
+
+/* BLOQUE 10: Estilos generales para secciones - Clases reutilizables para consistencia
+   - .container: Patron comun para centrar y limitar ancho del contenido
+   - .section-title: Estilo consistente para todos los titulos de seccion */
+.content-container {
+    max-width: 1200px;  /* Ancho maximo para mantener legibilidad en pantallas grandes */
+    margin: 0 auto;     /* Centra horizontalmente (auto calcula margenes iguales) */
+    padding: 0 20px;    /* Espacios laterales para que no toque bordes en moviles */
+}
+
+/* TiTULO DE SECCIoN: Estilo consistente para h2 principales de cada seccion */
+.section-title {
+    text-align: center;    /* Centrado para dar importancia y equilibrio visual */
+    font-size: 2.5rem;     /* Grande para jerarquia, pero menos que el hero title (3rem) */
+    margin-bottom: 50px;
+    color: #ffffff;
+}
+
+/* Seccion Acerca de */
+.about {
+    padding: 80px 0;
+    background-color: transparent;
+}
+
+.about-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 50px;
+    align-items: center;
+}
+
+.about-text {
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
+
+.about-text p {
+    margin-bottom: 20px;
+}
+
+.about-stats {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 30px;
+}
+/*para que las tarjetas se vean con color pero transparentes*/
+.stat {
+    text-align: center;
+    padding: 30px 20px;
+    background: rgba(68, 44, 107, 0.7); /* 👈 0.7 = 70% opaco, 30% transparente */
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.stat h3 {
+    font-size: 2.5rem;
+    color: #ffffff;
+    margin-bottom: 10px;
+}
+
+.stat p {
+    color: #ffffff;
+    font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+    .about-content {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+    
+    .about-stats {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 15px;
+    }
+    
+    .stat {
+        padding: 20px 10px;
+    }
+}
+
+/*HASTA AQUI BIEN*/
+
+/* BLOQUE 11: Seccion Proyectos - Muestra trabajos en cuadricula responsiva
+   - css grid es perfecto para layouts de tarjetas que se adaptan automaticamente
+   - auto-fit hace que las columnas se ajusten al espacio disponible
+   - minmax(300px, 1fr) asegura que cada tarjeta tenga minimo 300px de ancho */
+.projects {
+    padding: 80px 0;              /* Espaciado generoso arriba y abajo (80px) */
+    background-color: transparent;    /* Fondo blanco para contrastar con secciones grises */
+}
+
+/* CUADRiCULA DE PROYECTOS: Layout automatico que se adapta al ancho disponible */
+.projects-grid {
+    display: grid;                                              /* Activa css grid */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Columnas automaticas: minimo 300px, maximo llenar espacio */
+    gap: 30px;                                                  /* Espacio de 30px entre tarjetas */
+}
+
+/* TARJETA DE PROYECTO: Cada proyecto en su contenedor atractivo con efectos */
+.project-card {
+   background: rgba(68, 44, 107, 0.7); /* 👈 0.7 = 70% opaco, 30% transparente */
+    border-radius: 15px;                      /* Esquinas muy redondeadas - look moderno y amigable */
+    overflow: hidden;                         /* Oculta contenido que sobresalga - imagen no se sale */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);  /* Sombra suave - eleva tarjeta del fondo */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Animacion suave - cambios profesionales */
+}
+
+/* EFECTO HOVER EN TARJETA: Se eleva cuando pasas el mouse encima */
+.project-card:hover {
+    transform: translateY(-10px);                   /* Se eleva 10px - feedback visual de interaccion */
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15);      /* Sombra mas pronunciada - efecto de elevacion */
+}
+
+.project-image {
+    height: 200px;
+    background: url('styles/imagen1.png') no-repeat center center;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    font-weight: 700;
+    color: white;
+}
+
+
+/* INFORMACIoN DEL PROYECTO: Contenido de texto de la tarjeta */
+.project-info {
+    padding: 25px;  /* Espaciado comodo - contenido no toca bordes */
+}
+
+/* TiTULO DEL PROYECTO: Nombre destacado de cada trabajo */
+.project-info h3 {
+    font-size: 1.5rem;     /* Tamano prominente - destaca del texto normal */
+    margin-bottom: 15px;   /* Espacio antes descripcion - separacion visual clara */
+    color: #ffffff;          /* Gris oscuro legible - contrasta con fondo blanco */
+}
+
+/* DESCRIPCIoN DEL PROYECTO: Explicacion del trabajo realizado */
+.project-info p {
+    color: #ffffff;           /* Gris medio - menos prominente que titulo */
+    line-height: 1.6;      /* Espaciado legible - comodo para leer */
+    margin-bottom: 20px;   /* Espacio antes tecnologias - separa contenido */
+}
+
+/* CONTENEDOR DE TECNOLOGiAS: Etiquetas de habilidades usadas */
+.project-tech {
+    display: flex;      /* flexbox - etiquetas en linea horizontal */
+    flex-wrap: wrap;    /* Permite salto de linea - se acomodan automaticamente */
+    gap: 10px;         /* Espacio entre etiquetas - no se ven pegadas */
+}
+
+/* ETIQUETA DE TECNOLOGiA: Skills individuales usados en el proyecto */
+.project-tech span {
+    background: #e3f2fd;    /* Azul muy claro - destaca sin ser agresivo */
+    color: #540e66;         /* Azul oscuro - contrasta con fondo claro */
+    padding: 5px 12px;      /* Padding pequeno - etiquetas compactas */
+    border-radius: 20px;    /* Muy redondeado (pildora) - look moderno */
+    font-size: 0.8rem;      /* Texto pequeno - secundario al titulo */
+    font-weight: 600;       /* Semi-negrita - legible pero no dominante */
+}
+
+/* RESPONSIVE PARA PROYECTOS: En moviles una sola columna */
+@media (max-width: 768px) {
+    .projects-grid {
+        grid-template-columns: 1fr;  /* Solo una columna - proyectos apilados verticalmente */
+    }
+}
+
+
+
+/* BLOQUE 12: Footer - Sencillo y responsivo */
+.footer {
+    background-color: transparent;  /* Azul marca consistente */
+    color: white;               /* Texto blanco para contraste */
+    padding: 20px 0;            /* Espaciado arriba y abajo */
+    text-align: center;          /* Centrar todo el contenido */
+}
+
+.footer-container {
+    max-width: 1200px;          /* Limita ancho del contenido */
+    margin: 0 auto;             /* Centrado horizontal */
+    padding: 0 20px;            /* Espaciado lateral en pantallas pequeñas */
+    display: flex;              /* Flexbox para alinear texto y redes */
+    flex-direction: column;     /* Columnas verticales */
+    gap: 10px;                  /* Separación entre texto y enlaces */
+}
+
+.footer-social {
+    display: flex;              /* Enlaces en línea */
+    justify-content: center;    /* Centrado horizontal */
+    gap: 15px;                  /* Espacio entre enlaces */
+}
+
+.footer-social a {
+    color: white;               /* Color de texto */
+    text-decoration: none;      /* Sin subrayado */
+    font-weight: 500;           /* Semi-negrita */
+    transition: color 0.3s ease; /* Efecto hover */
+}
+
+.footer-social a:hover {
+    color: #ffffffaa;           /* Cambio sutil al pasar el mouse */
 }
