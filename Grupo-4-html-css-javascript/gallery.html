@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Mi Portafolio</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" rel="stylesheet"/>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-gray-100">
+<header class="bg-white shadow-md">
+<div class="container mx-auto px-6 py-4 flex justify-between items-center">
+<a class="text-2xl font-bold text-blue-600" href="index.html">Mi Portafolio</a>
+<nav class="hidden md:flex space-x-8">
+<a class="text-gray-600 hover:text-blue-600" href="index.html">Inicio</a>
+<a class="text-gray-600 hover:text-blue-600" href="#acerca">Acerca de</a>
+<a class="text-gray-600 hover:text-blue-600" href="#proyecto">Proyectos</a>
+<a class="text-gray-600 hover:text-blue-600" href="contact.html">Contacto</a>
+</nav>
+<button class="md:hidden">
+<svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 6h16M4 12h16m-7 6h7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</button>
+</div>
+</header>
+<main class="container mx-auto px-6 py-12">
+<h1 class="text-4xl font-bold text-center text-gray-800 mb-8">Ciclo de vida del desarrollo de Software</h1>
+
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6" id="gallery">
+<div class="gallery-item bg-white rounded-lg shadow-lg overflow-hidden cursor-pointer transform hover:scale-105 transition-transform duration-300">
+<img alt="planning" class="w-full h-48 object-cover" src="https://www.scnsoft.com/blog-pictures/software-development-outsourcing/plan-your-project-with-your-software-development-methodology.png"/>
+<div class="p-4">
+<h3 class="font-semibold text-lg text-gray-800">Planificación de proyecto</h3>
+</div>
+</div>
+
+<div class="gallery-item bg-white rounded-lg shadow-lg overflow-hidden cursor-pointer transform hover:scale-105 transition-transform duration-300">
+<img alt="requerimientos" class="w-full h-48 object-cover" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgtIe6IrGFAvwWOjCr0PCqlzgL-uExGqHgPNry6Zd-8YgWwXkDWas4FfUn9MRYLNeCgnNDRkzE-UPm60jWdOM04z9kp6u7HsPs9DSsDBQYCGnMUqxABtppsJf-07SJ7fktALOdmLy0_ZscZ/s1600/7+T%25C3%25A9cnicas+de+levantamiento+de+requerimientos+-+Tormenta+de+ideas.jpg"/>
+<div class="p-4">
+<h3 class="font-semibold text-lg text-gray-800">Análisis de requerimientos</h3>
+</div>
+</div>
+
+<div class="gallery-item bg-white rounded-lg shadow-lg overflow-hidden cursor-pointer transform hover:scale-105 transition-transform duration-300">
+<img alt="diseño" class="w-full h-48 object-cover" src="https://www.varadero.es/wp-content/uploads/2020/03/servcios-it-desarrollo-software.png"/>
+<div class="p-4">
+<h3 class="font-semibold text-lg text-gray-800">Diseño del Software</h3>
+</div>
+</div>
+
+<div class="gallery-item bg-white rounded-lg shadow-lg overflow-hidden cursor-pointer transform hover:scale-105 transition-transform duration-300">
+<img alt="coding" class="w-full h-48 object-cover" src="https://img.freepik.com/vector-premium/desarrollo-software-lenguaje-programacion-codificacion_284092-33.jpg"/>
+<div class="p-4">
+<h3 class="font-semibold text-lg text-gray-800">Proceso de Codificación</h3>
+</div>
+</div>
+
+<div class="gallery-item bg-white rounded-lg shadow-lg overflow-hidden cursor-pointer transform hover:scale-105 transition-transform duration-300">
+<img alt="testing" class="w-full h-48 object-cover" src="https://www.indium.tech/wp-content/uploads/2021/04/115-7-Reasons-Why-Software-Testing-is-Important.jpg"/>
+<div class="p-4">
+<h3 class="font-semibold text-lg text-gray-800">Testing & QA</h3>
+</div>
+</div>
+<div class="gallery-item bg-white rounded-lg shadow-lg overflow-hidden cursor-pointer transform hover:scale-105 transition-transform duration-300">
+<img alt="deploy" class="w-full h-48 object-cover" src="https://zibtek-ghost-blog.sfo3.cdn.digitaloceanspaces.com/2021/09/Software-Deployment-Process.jpg"/>
+<div class="p-4">
+<h3 class="font-semibold text-lg text-gray-800">Proceso de Despliegue CI/CD</h3>
+</div>
+</div>
+<div class="gallery-item bg-white rounded-lg shadow-lg overflow-hidden cursor-pointer transform hover:scale-105 transition-transform duration-300">
+<img alt="mantenimiento" class="w-full h-48 object-cover" src="https://arsoftlabs.com/media/servicios/softwaremant.jpg"/>
+<div class="p-4">
+<h3 class="font-semibold text-lg text-gray-800">Proceso de Mantenimiento</h3>
+</div>
+</div>
+<div class="gallery-item bg-white rounded-lg shadow-lg overflow-hidden cursor-pointer transform hover:scale-105 transition-transform duration-300">
+<img alt="feedback" class="w-full h-48 object-cover" src="https://img.freepik.com/vector-premium/ilustracion-vectorial-calificacion-revision-cliente-concepto-retroalimentacion_675567-3934.jpg"/>
+<div class="p-4">
+<h3 class="font-semibold text-lg text-gray-800">Feedback con Clientes</h3>
+</div>
+</div>
+<div class="gallery-item bg-white rounded-lg shadow-lg overflow-hidden cursor-pointer transform hover:scale-105 transition-transform duration-300">
+<img alt="documentacion" class="w-full h-48 object-cover" src="https://www.codemotion.com/magazine/wp-content/uploads/2023/05/iStock-1128491393.jpg"/>
+<div class="p-4">
+<h3 class="font-semibold text-lg text-gray-800">Documentación de los procesos</h3>
+</div>
+</div>
+</div>
+</main>
+<footer class="bg-gray-800 text-white py-12">
+<div class="container mx-auto px-6">
+<div class="md:flex md:justify-between">
+<div class="mb-6 md:mb-0">
+<h3 class="text-xl font-bold text-blue-500 mb-2">Mi Portafolio</h3>
+<p class="text-gray-400">Un espacio para mostrar mi trabajo y pasión por el desarrollo web.</p>
+</div>
+<div class="flex flex-col">
+<h3 class="text-lg font-semibold mb-3">Navegación</h3>
+<a class="text-gray-400 hover:text-white mb-2" href="index.html">Inicio</a>
+<a class="text-gray-400 hover:text-white mb-2" href="#acerca">Acerca de</a>
+<a class="text-gray-400 hover:text-white mb-2" href="#proyecto">Proyectos</a>
+<a class="text-gray-400 hover:text-white" href="contact.html">Contacto</a>
+</div>
+</div>
+<div class="border-t border-gray-700 mt-8 pt-6 text-center">
+<p class="text-gray-500 text-sm">© 2024 Mi Portafolio. Todos los derechos reservados.</p>
+</div>
+</div>
+</footer>
+<div class="fixed inset-0 bg-black bg-opacity-75 hidden flex items-center justify-center p-4 z-50" id="modal">
+<div class="bg-white rounded-lg max-w-3xl max-h-full overflow-auto relative">
+<button class="absolute top-2 right-2 text-white bg-black bg-opacity-50 rounded-full p-2 hover:bg-opacity-75" id="closeModal">
+<svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M6 18L18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</button>
+<img alt="Imagen del proyecto ampliada" class="w-full h-auto" id="modalImage" src=""/>
+</div>
+</div>
+
+ <script src="js/script.js"></script>
+
+</body></html>
