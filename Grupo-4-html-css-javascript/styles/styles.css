@@ -1028,3 +1028,37 @@ main {
         font-size: 1rem;
     }
 }
+
+a {
+    color: rgb(136, 13, 138);          /* color inicial del enlace */
+    text-decoration: none; /* opcional, quita subrayado */
+}
+
+a:hover {
+    color: rgb(237, 64, 6);         /* cuando el mouse pasa por encima */
+}
+
+a:active {
+    color: rgb(245, 242, 242);           /* mientras haces clic en el enlace */
+}
+
+a:visited {
+    color: rg
+    
+    b(245, 244, 245);        /* después de haber visitado el enlace */
+}
+
+.read-more {
+    color: rgb(100, 6, 97);          /* color inicial */
+    text-decoration: none; /* opcional */
+    transition: color 0.3s; /* para un cambio suave */
+}
+
+.read-more:hover {
+    color: rgb(237, 19, 164);         /* color al pasar el mouse */
+}
+
+
+.read-more:visited {
+    color: rgb(237, 40, 237);        /* color después de visitar el enlace */
+}
