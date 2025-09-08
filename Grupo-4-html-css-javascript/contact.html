@@ -413,12 +413,12 @@
                     <h1>SpaceTI</h1>
                 </div>
                 <ul class="nav-menu">
-                <li><a href="index.html">Inicio</a></li>
-                <li><a href="#acerca">Acerca de</a></li>
-                <li><a href="#proyectos">Proyectos</a></li>
+                 <li><a href="index.html">Inicio</a></li>
+                <li><a href="index.html#acerca">Acerca de</a></li>
+                <li><a href="index.html#proyectos_futuros">Proyectos</a></li>
                 <li><a href="post.html">Post</a></li>
                 <li><a href="gallery.html">Galeria</a></li>
-               
+                <li><a href="contact.html">Contacto</a></li>
                 
 
                 </ul>
@@ -584,42 +584,10 @@
     </footer>
     
     // BLOQUE 7: JavaScript para funcionalidad del formulario
-    <script src="js/index.js"></script>
-    <script>
-        // BLOQUE 7: JavaScript para funcionalidad del formulario
-        document.addEventListener('DOMContentLoaded', function() {
-            const form = document.getElementById('contactForm');
-            const whatsappCheckbox = document.getElementById('whatsapp_contact');
-            const telefonoField = document.getElementById('telefono');
-            
-            // Mostrar/ocultar campo de teléfono segun checkbox
-            whatsappCheckbox.addEventListener('change', function() {
-                telefonoField.disabled = !this.checked;
-                if (!this.checked) {
-                    telefonoField.value = '';
-                }
-            });
-            
-            // Inicialmente deshabilitar el campo de telefono
-            telefonoField.disabled = true;
-            
-            if (form) {
-                form.addEventListener('submit', function(e) {
-                    e.preventDefault();
-                    
-                    // Validación adicional si seleccionó WhatsApp
-                    if (whatsappCheckbox.checked && !telefonoField.value.trim()) {
-                        alert('Por favor ingresa tu número de WhatsApp');
-                        return;
-                    }
-                    
-                    // Simulacion de envío exitoso
-                    alert('¡Mensaje enviado con éxito! Te contactaremos pronto.');
-                    form.reset();
-                    telefonoField.disabled = true;
-                });
-            }
-        });
-    </script>
+    
+    <script src="js/index.js" ></script>
+    <script src="js/contact.js" ></script>
+
+ 
 </body>
 </html>

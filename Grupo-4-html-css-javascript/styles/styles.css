@@ -127,7 +127,7 @@ h1 {
 
 /* HOVER EN NAVEGACIoN: Feedback visual al pasar mouse */
 .nav-menu a:hover {
-    color: #ffffff;  /* Azul marca - consistente con color del logo */
+    color: #bd25eb;  /* Azul marca - consistente con color del logo */
 }
 
 /* AJUSTE ADICIONAL AL BODY: Como el header es fijo, agregamos padding para que no tape el contenido
@@ -212,7 +212,7 @@ main {
 
 .btn-primary {
     background-color: #ffffff;  /* Fondo blanco - destaca perfectamente sobre gradiente */
-    color: #2563eb;            /* Azul marca - consistencia con color principal */
+    color: #bd25eb;            /* Azul marca - consistencia con color principal */
 }
 
 .btn-primary:hover {
@@ -229,7 +229,7 @@ main {
 
 .btn-secondary:hover {
     background-color: #ffffff;  /* Se llena blanco - feedback visual de interaccion */
-    color: #ffffff;            /* Texto azul - mantiene contraste */
+    color: #bd25eb;            /* Texto azul - mantiene contraste */
 }
 
 /*HASTA AQUI BIEN*/
@@ -477,6 +477,21 @@ main {
     font-size: 0.8rem;      /* Texto pequeno - secundario al titulo */
     font-weight: 600;       /* Semi-negrita - legible pero no dominante */
 }
+#proyectos_futuros .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    justify-content: center; /* centra las tarjetas */
+}
+
+#proyectos_futuros .proyect-container {
+    max-width: 1100px;  /* evita que se estire demasiado */
+    margin: 0 auto;     /* centra horizontalmente */
+    padding: 0 20px;
+}
+
+
+
 
 /* RESPONSIVE PARA PROYECTOS: En moviles una sola columna */
 @media (max-width: 768px) {
@@ -1012,4 +1027,38 @@ main {
     .contact-subtitle {
         font-size: 1rem;
     }
+}
+
+a {
+    color: rgb(136, 13, 138);          /* color inicial del enlace */
+    text-decoration: none; /* opcional, quita subrayado */
+}
+
+a:hover {
+    color: rgb(237, 64, 6);         /* cuando el mouse pasa por encima */
+}
+
+a:active {
+    color: rgb(245, 242, 242);           /* mientras haces clic en el enlace */
+}
+
+a:visited {
+    color: rg
+    
+    b(245, 244, 245);        /* después de haber visitado el enlace */
+}
+
+.read-more {
+    color: rgb(100, 6, 97);          /* color inicial */
+    text-decoration: none; /* opcional */
+    transition: color 0.3s; /* para un cambio suave */
+}
+
+.read-more:hover {
+    color: rgb(237, 19, 164);         /* color al pasar el mouse */
+}
+
+
+.read-more:visited {
+    color: rgb(237, 40, 237);        /* color después de visitar el enlace */
 }
