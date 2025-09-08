@@ -1062,3 +1062,107 @@ a:visited {
 .read-more:visited {
     color: rgb(237, 40, 237);        /* color después de visitar el enlace */
 }
+
+
+
+
+
+/* Contenedor principal de la sección de la galería */
+#mi-galeria {
+    padding: 80px 0; 
+    width: 100%;
+    background-color: transparent;
+}
+#mi-galeria .gallery-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+
+#mi-galeria .section-title {
+    color: #ffffff; 
+    margin-bottom: 50px; 
+}
+
+
+#mi-galeria .gallery-grid {
+    display: flex;
+    flex-wrap: wrap; 
+    gap: 30px; 
+    justify-content: center;
+}
+
+
+#mi-galeria .gallery-card {
+    flex: 1 1 300px; 
+    max-width: 350px;
+    border-radius: 15px; 
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); 
+    overflow: hidden; 
+    cursor: pointer;
+    background: rgba(68, 44, 107, 0.5); 
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+#mi-galeria .gallery-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    display: block;
+}
+#mi-galeria .gallery-card:hover {
+    transform: translateY(-8px) scale(1.04);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+}
+@media (max-width: 768px) {
+    #mi-galeria {
+        padding: 60px 0;
+    }
+    
+    #mi-galeria .gallery-grid {
+        gap: 20px;
+    }
+}
+
+
+
+#mi-galeria .gallery-card {
+    position: relative; 
+}
+
+#mi-galeria .card-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(15, 5, 39, 0.75); 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0; 
+    transition: opacity 0.4s ease;
+}
+
+
+#mi-galeria .card-title {
+    color: #ffffff;
+    font-size: 1.4rem;
+    font-weight: 600;
+    text-align: center;
+    padding: 0 15px; 
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    transition-delay: 0.1s; 
+}
+
+
+#mi-galeria .gallery-card:hover .card-overlay {
+    opacity: 1;
+}
+
+#mi-galeria .gallery-card:hover .card-title {
+    opacity: 1; 
+    transform: translateY(0); 
+}
