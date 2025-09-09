@@ -127,7 +127,7 @@ h1 {
 
 /* HOVER EN NAVEGACIoN: Feedback visual al pasar mouse */
 .nav-menu a:hover {
-    color: #ffffff;  /* Azul marca - consistente con color del logo */
+    color: #bd25eb;  /* Azul marca - consistente con color del logo */
 }
 
 /* AJUSTE ADICIONAL AL BODY: Como el header es fijo, agregamos padding para que no tape el contenido
@@ -212,7 +212,7 @@ main {
 
 .btn-primary {
     background-color: #ffffff;  /* Fondo blanco - destaca perfectamente sobre gradiente */
-    color: #2563eb;            /* Azul marca - consistencia con color principal */
+    color: #bd25eb;            /* Azul marca - consistencia con color principal */
 }
 
 .btn-primary:hover {
@@ -229,7 +229,7 @@ main {
 
 .btn-secondary:hover {
     background-color: #ffffff;  /* Se llena blanco - feedback visual de interaccion */
-    color: #ffffff;            /* Texto azul - mantiene contraste */
+    color: #bd25eb;            /* Texto azul - mantiene contraste */
 }
 
 /*HASTA AQUI BIEN*/
@@ -477,6 +477,21 @@ main {
     font-size: 0.8rem;      /* Texto pequeno - secundario al titulo */
     font-weight: 600;       /* Semi-negrita - legible pero no dominante */
 }
+#proyectos_futuros .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    justify-content: center; /* centra las tarjetas */
+}
+
+#proyectos_futuros .proyect-container {
+    max-width: 1100px;  /* evita que se estire demasiado */
+    margin: 0 auto;     /* centra horizontalmente */
+    padding: 0 20px;
+}
+
+
+
 
 /* RESPONSIVE PARA PROYECTOS: En moviles una sola columna */
 @media (max-width: 768px) {
@@ -1012,4 +1027,142 @@ main {
     .contact-subtitle {
         font-size: 1rem;
     }
+}
+
+a {
+    color: rgb(136, 13, 138);          /* color inicial del enlace */
+    text-decoration: none; /* opcional, quita subrayado */
+}
+
+a:hover {
+    color: rgb(237, 64, 6);         /* cuando el mouse pasa por encima */
+}
+
+a:active {
+    color: rgb(245, 242, 242);           /* mientras haces clic en el enlace */
+}
+
+a:visited {
+    color: rg
+    
+    b(245, 244, 245);        /* después de haber visitado el enlace */
+}
+
+.read-more {
+    color: rgb(100, 6, 97);          /* color inicial */
+    text-decoration: none; /* opcional */
+    transition: color 0.3s; /* para un cambio suave */
+}
+
+.read-more:hover {
+    color: rgb(237, 19, 164);         /* color al pasar el mouse */
+}
+
+
+.read-more:visited {
+    color: rgb(237, 40, 237);        /* color después de visitar el enlace */
+}
+
+
+
+
+
+/* Contenedor principal de la sección de la galería */
+#mi-galeria {
+    padding: 80px 0; 
+    width: 100%;
+    background-color: transparent;
+}
+#mi-galeria .gallery-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+
+#mi-galeria .section-title {
+    color: #ffffff; 
+    margin-bottom: 50px; 
+}
+
+
+#mi-galeria .gallery-grid {
+    display: flex;
+    flex-wrap: wrap; 
+    gap: 30px; 
+    justify-content: center;
+}
+
+
+#mi-galeria .gallery-card {
+    flex: 1 1 300px; 
+    max-width: 350px;
+    border-radius: 15px; 
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); 
+    overflow: hidden; 
+    cursor: pointer;
+    background: rgba(68, 44, 107, 0.5); 
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+#mi-galeria .gallery-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    display: block;
+}
+#mi-galeria .gallery-card:hover {
+    transform: translateY(-8px) scale(1.04);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+}
+@media (max-width: 768px) {
+    #mi-galeria {
+        padding: 60px 0;
+    }
+    
+    #mi-galeria .gallery-grid {
+        gap: 20px;
+    }
+}
+
+
+
+#mi-galeria .gallery-card {
+    position: relative; 
+}
+
+#mi-galeria .card-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(15, 5, 39, 0.75); 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0; 
+    transition: opacity 0.4s ease;
+}
+
+
+#mi-galeria .card-title {
+    color: #ffffff;
+    font-size: 1.4rem;
+    font-weight: 600;
+    text-align: center;
+    padding: 0 15px; 
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    transition-delay: 0.1s; 
+}
+
+
+#mi-galeria .gallery-card:hover .card-overlay {
+    opacity: 1;
+}
+
+#mi-galeria .gallery-card:hover .card-title {
+    opacity: 1; 
+    transform: translateY(0); 
 }
